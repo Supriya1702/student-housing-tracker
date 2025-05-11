@@ -17,7 +17,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.http import JsonResponse
 
-from api.views import ListingListCreateView
+from listings.views import ListingListCreateView, ListingRetrieveUpdateDestroyView
+from reviews.views import ReviewViewSet
+from saved_listings.views import SavedListingViewSet
+from user_messages.views import UserMessageViewSet
+from users.views import UserViewSet
+from verification.views import VerificationViewSet
+from users.views import get_users
 
 def root_view(request):
     return JsonResponse({"message": "Welcome to the Student Housing Tracker API"})
@@ -32,4 +38,21 @@ urlpatterns = [
 # listings/urls.py (app-level)
 urlpatterns = [
     path('listings/', ListingListCreateView.as_view(), name='listings'),
+    path('listings/<uuid:pk>/', ListingRetrieveUpdateDestroyView.as_view(), name='listing-detail'),
+    path('users-info/', get_users, name='get_users'),
+
+    path('reviews/', ReviewViewSet.as_view({'get': 'list', 'post': 'create'}), name='review-list'),
+    path('reviews/<int:pk>/', ReviewViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='review-detail'),
+
+    path('saved-listings/', SavedListingViewSet.as_view({'get': 'list', 'post': 'create'}), name='savedlisting-list'),
+    path('saved-listings/<int:pk>/', SavedListingViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='savedlisting-detail'),
+
+    path('user-messages/', UserMessageViewSet.as_view({'get': 'list', 'post': 'create'}), name='usermessage-list'),
+    path('user-messages/<int:pk>/', UserMessageViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='usermessage-detail'),
+
+    path('users/', UserViewSet.as_view({'get': 'list', 'post': 'create'}), name='user-list'),
+    path('users/<int:pk>/', UserViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='user-detail'),
+
+    path('verifications/', VerificationViewSet.as_view({'get': 'list', 'post': 'create'}), name='verification-list'),
+    path('verifications/<int:pk>/', VerificationViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='verification-detail'),
 ]

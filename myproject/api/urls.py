@@ -10,16 +10,18 @@ from users.views import UserViewSet
 from verification.views import VerificationViewSet
 from users.views import get_users  # assuming get_users is a separate function
 
-router = DefaultRouter()
-router.register(r'reviews', ReviewViewSet, basename='review')
-router.register(r'saved-listings', SavedListingViewSet, basename='savedlisting')
-router.register(r'user-messages', UserMessageViewSet, basename='usermessage')
-router.register(r'users', UserViewSet, basename='user')
-router.register(r'verifications', VerificationViewSet, basename='verification')
+# router = DefaultRouter()
+# router.register(r'reviews', ReviewViewSet, basename='review')
+# router.register(r'saved-listings', SavedListingViewSet, basename='savedlisting')
+# router.register(r'user-messages', UserMessageViewSet, basename='usermessage')
+# router.register(r'users', UserViewSet, basename='user')
+# router.register(r'verifications', VerificationViewSet, basename='verification')
 
-urlpatterns = [
-    path('', include(router.urls)),
-    path('listings/', ListingListCreateView.as_view(), name='listings'),
-    path('listings/<uuid:pk>/', ListingRetrieveUpdateDestroyView.as_view(), name='listing-detail'),
-    path('users-info/', get_users, name='get_users'),  # to distinguish from DRF user list
-]
+# urlpatterns = [
+#     path('', include(router.urls)),
+#     path('listings/', ListingListCreateView.as_view(), name='listings'),
+#     path('listings/<uuid:pk>/', ListingRetrieveUpdateDestroyView.as_view(), name='listing-detail'),
+#     path('users-info/', get_users, name='get_users'),  # to distinguish from DRF user list
+# ]
+
+
