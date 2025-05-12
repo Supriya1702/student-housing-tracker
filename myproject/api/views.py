@@ -21,3 +21,4 @@ def get_users(request):
 @api_view(['GET'])
 def get_listings(request):
     return Response(DUMMY_LISTINGS)
+
