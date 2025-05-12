@@ -15,9 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.http import JsonResponse
+
+from api.views import ListingListCreateView
+
+def root_view(request):
+    return JsonResponse({"message": "Welcome to the Student Housing Tracker API"})
 
 urlpatterns = [
+    path('', root_view),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),  # Include API routes
 
+]
+
+# listings/urls.py (app-level)
+urlpatterns = [
+    path('listings/', ListingListCreateView.as_view(), name='listings'),
 ]
