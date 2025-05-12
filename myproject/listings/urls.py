@@ -1,8 +1,7 @@
-# listings/urls.py
-from rest_framework.routers import DefaultRouter
-from .views import ListingViewSet
+from django.urls import path
+from .views import ListingListCreateView, ListingRetrieveUpdateDestroyView
 
-router = DefaultRouter()
-router.register(r'', ListingViewSet)  # '' means base URL will be /api/listings/
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('listings/', ListingListCreateView.as_view(), name='listing-list-create'),
+    path('listings/<uuid:listing_id>/', ListingRetrieveUpdateDestroyView.as_view(), name='listing-detail'),
+]

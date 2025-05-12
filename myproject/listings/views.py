@@ -9,4 +9,4 @@ class ListingListCreateView(generics.ListCreateAPIView):
 class ListingRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
-    lookup_field = 'pk'
+    lookup_field = 'listing_id'

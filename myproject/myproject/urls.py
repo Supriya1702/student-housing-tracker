@@ -24,6 +24,11 @@ from user_messages.views import UserMessageViewSet
 from users.views import UserViewSet
 from verification.views import VerificationViewSet
 from users.views import get_users
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 
 def root_view(request):
     return JsonResponse({"message": "Welcome to the Student Housing Tracker API"})
@@ -37,9 +42,12 @@ urlpatterns = [
 
 # listings/urls.py (app-level)
 urlpatterns = [
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
     path('listings/', ListingListCreateView.as_view(), name='listings'),
     path('listings/<uuid:pk>/', ListingRetrieveUpdateDestroyView.as_view(), name='listing-detail'),
-    path('users-info/', get_users, name='get_users'),
+    # path('users-info/', get_users, name='get_users'),
 
     path('reviews/', ReviewViewSet.as_view({'get': 'list', 'post': 'create'}), name='review-list'),
     path('reviews/<int:pk>/', ReviewViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='review-detail'),
