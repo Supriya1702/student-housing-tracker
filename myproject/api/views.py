@@ -16,3 +16,8 @@ class ListingRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 @api_view(['GET'])
 def get_users(request):
     return Response(DUMMY_USERS)
+
+
+@api_view(['GET'])
+def get_listings(request):
+    return Response(DUMMY_LISTINGS)
