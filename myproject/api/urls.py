@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from listings.views import ListingListCreateView, ListingRetrieveUpdateDestroyView
-from reviews.views import ReviewViewSet
+# from reviews.views import ReviewViewSet
 from saved_listings.views import SavedListingViewSet
 from user_messages.views import UserMessageViewSet
 from users.views import UserViewSet

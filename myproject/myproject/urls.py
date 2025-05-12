@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.http import JsonResponse
 
 from listings.views import ListingListCreateView, ListingRetrieveUpdateDestroyView
-from reviews.views import ReviewViewSet
+from reviews.views import ReviewListCreateView, ReviewRetrieveUpdateDestroyView
 from saved_listings.views import SavedListingViewSet
 from user_messages.views import UserMessageViewSet
 from users.views import UserViewSet
@@ -50,8 +50,8 @@ urlpatterns = [
 
     # path('users-info/', get_users, name='get_users'),
 
-    path('reviews/', ReviewViewSet.as_view({'get': 'list', 'post': 'create'}), name='review-list'),
-    path('reviews/<int:pk>/', ReviewViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='review-detail'),
+    path('reviews/', ReviewListCreateView.as_view(), name='reviews'),
+    path('reviews/<uuid:review_id>/', ReviewRetrieveUpdateDestroyView.as_view(), name='review-detail'),
 
     path('saved-listings/', SavedListingViewSet.as_view({'get': 'list', 'post': 'create'}), name='savedlisting-list'),
     path('saved-listings/<int:pk>/', SavedListingViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='savedlisting-detail'),
