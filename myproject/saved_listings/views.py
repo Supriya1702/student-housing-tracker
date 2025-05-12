@@ -1,7 +1,12 @@
-from rest_framework import viewsets
+from rest_framework import generics
 from .models import SavedListing
 from .serializers import SavedListingSerializer
 
-class SavedListingViewSet(viewsets.ModelViewSet):
+class SavedListingsListCreateView(generics.ListCreateAPIView):
     queryset = SavedListing.objects.all()
     serializer_class = SavedListingSerializer
+
+class SavedListingRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SavedListing.objects.all()
+    serializer_class = SavedListingSerializer
+    lookup_field = 'saved_id'
