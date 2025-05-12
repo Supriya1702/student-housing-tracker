@@ -1,6 +1,11 @@
-from django.urls import path
-from .views import UserListCreateView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import UserViewSet, get_users
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
-    path('', UserListCreateView.as_view(), name='user-list'),
+    path('users', include(router.urls)),
+    path('users-info/', get_users, name='get_users'),  # or whatever endpoint you want
 ]
