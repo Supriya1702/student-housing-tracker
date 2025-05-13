@@ -6,6 +6,6 @@ router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
-    path('users', include(router.urls)),
-    path('users-info/', get_users, name='get_users'),  # or whatever endpoint you want
+    path('users/', UserViewSet.as_view({'get': 'list', 'post': 'create'}), name='user-list'),
+    path('users/<int:pk>/', UserViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='user-detail'),
 ]

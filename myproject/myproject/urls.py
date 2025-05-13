@@ -48,7 +48,7 @@ urlpatterns = [
     path('listings/', ListingListCreateView.as_view(), name='listings'),# urls.py
     path('listings/<uuid:listing_id>/', ListingRetrieveUpdateDestroyView.as_view(), name='listing-detail'),
 
-    # path('users-info/', get_users, name='get_users'),
+    path('users-info/', get_users, name='get_users'),
 
     path('reviews/', ReviewListCreateView.as_view(), name='reviews'),
     path('reviews/<uuid:review_id>/', ReviewRetrieveUpdateDestroyView.as_view(), name='review-detail'),
