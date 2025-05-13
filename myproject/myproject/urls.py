@@ -63,5 +63,5 @@ urlpatterns = [
     path('users/<int:pk>/', UserViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='user-detail'),
 
     path('verifications/', VerificationViewSet.as_view({'get': 'list', 'post': 'create'}), name='verification-list'),
-    path('verifications/<int:pk>/', VerificationViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='verification-detail'),
+    path('verifications/<uuid:pk>/', VerificationViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='verification-detail'),
 ]
