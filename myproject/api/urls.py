@@ -3,8 +3,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from listings.views import ListingListCreateView, ListingRetrieveUpdateDestroyView
-from reviews.views import ReviewViewSet
-from saved_listings.views import SavedListingViewSet
+# from reviews.views import ReviewViewSet
+from saved_listings.views import SavedListingsListCreateView
 from user_messages.views import UserMessageViewSet
 from users.views import UserViewSet
 from verification.views import VerificationViewSet
@@ -12,7 +12,7 @@ from users.views import get_users  # assuming get_users is a separate function
 
 # router = DefaultRouter()
 # router.register(r'reviews', ReviewViewSet, basename='review')
-# router.register(r'saved-listings', SavedListingViewSet, basename='savedlisting')
+# router.register(r'saved-listings', SavedListingsListCreateView, basename='savedlisting')
 # router.register(r'user-messages', UserMessageViewSet, basename='usermessage')
 # router.register(r'users', UserViewSet, basename='user')
 # router.register(r'verifications', VerificationViewSet, basename='verification')
